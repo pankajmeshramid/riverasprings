@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:tier-ii.com)",
+      "Bash(ls -la C:/Users/PANKAJ/riverasprings/*.html)",
+      "Bash(ls -la C:/Users/PANKAJ/riverasprings/factory-*.jpg)",
+      "Bash(base64 -w0 C:/Users/PANKAJ/riverasprings/factory-0015.jpg)",
+      "Bash(base64 -w0 C:/Users/PANKAJ/riverasprings/factory-0016.jpg)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(awk 'NR>=1224 && NR<=1240' \"C:\\\\Users\\\\PANKAJ\\\\riverasprings\\\\index.html\")",
+      "Bash(awk 'NR>=1220 && NR<=1228 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk 'NR>=1229 && NR<=1245 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk 'NR>=1235 && NR<=1242 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(sed -n '1158,1222p' index.html)",
+      "Read(//tmp/**)",
+      "Bash(awk 'NR>=1155 && NR<=1175 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk 'NR>=1168 && NR<=1175 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk 'NR>=1168 && NR<=1240 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk 'NR>=1232 && NR<=1240 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk NR>=1155 && NR<=1165 {printf \"%d: %s\\\\n\", NR, $0}:*)",
+      "Bash(awk 'NR>=1148 && NR<=1175 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk 'NR>=1167 && NR<=1175 {printf \"%d: %s\\\\n\", NR, $0}' index.html)",
+      "Bash(awk NR>=1230 && NR<=1238 {printf \"%d: %s\\\\n\", NR, $0}:*)",
+      "Bash(awk NR==1169 || NR==1170 {printf \"%d: [%s]\\\\n\", NR, $0}:*)",
+      "Bash(sed -i '1169a\\\\\\\\' index.html)",
+      "Bash(awk 'NR>=1169 && NR<=1172 {printf \"%d: [%s]\\\\n\", NR, $0}' index.html)",
+      "Bash(awk 'NR>=1148 && NR<=1237' index.html)",
+      "Bash(awk -F: '$1 >= 1148 && $1 <= 1180')",
+      "Bash(awk -F: '$1 >= 1168 && $1 <= 1180')",
+      "Bash(awk -F: '$1 >= 1230 && $1 <= 1240')",
+      "Bash(grep -E \"\\\\.py$|_b64\\\\.txt$\")",
+      "Bash(sed -n '1650,1652p' index.html)",
+      "Bash(sed -n '1766,1770p' index.html)",
+      "Bash(sed -n '1972,1975p' \"C:/Users/PANKAJ/riverasprings/index.html\")",
+      "Bash(sed -n '2055,2058p' \"C:/Users/PANKAJ/riverasprings/index.html\")",
+      "Bash(sed -n '2139,2142p' \"C:/Users/PANKAJ/riverasprings/index.html\")"
+    ]
+  }
+}
