@@ -1861,15 +1861,16 @@ ul,ol{list-style:none}
         <p><strong>FSSAI:</strong> 11526999000410</p>
       </div>
       <div class="contact-form rv rv-d3">
-        <form id="contactForm" action="https://formspree.io/f/xrpbznyk" method="POST">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="96ec801c-a17d-4cfa-b05f-783a6ba53267">
+          <input type="hidden" name="subject" value="New Contact Form Submission — Rivera Springs Website">
+          <input type="checkbox" name="botcheck" style="display:none">
           <label for="cfName" data-i18n="ctNameLabel">Name</label>
           <input type="text" id="cfName" name="name" required placeholder="Your name" data-i18n-placeholder="ctNamePh">
           <label for="cfPhone" data-i18n="ctPhoneFLabel">Phone</label>
           <input type="tel" id="cfPhone" name="phone" required placeholder="Your phone number" data-i18n-placeholder="ctPhonePh">
           <label for="cfMsg" data-i18n="ctMsgLabel">Message</label>
           <textarea id="cfMsg" name="message" required placeholder="How can we help?" data-i18n-placeholder="ctMsgPh"></textarea>
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <input type="hidden" name="_subject" value="New Contact Form Submission — Rivera Springs Website">
           <button type="submit" class="contact-submit" data-i18n="ctSubmit">Send Message</button>
         </form>
         <div id="formSuccessMsg" class="form-success" style="display:none;" data-i18n="formSuccess">
