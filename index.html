@@ -46,6 +46,7 @@
   ]
 }
 </script>
+<script>try{if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.className+=" hero-anim"}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700;1,6..96,900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
@@ -204,166 +205,204 @@ ul,ol{list-style:none}
   .mob-lang{display:none!important}
 }
 
-/* ═══════════ HERO ═══════════ */
+/* ═══════════ HERO — "The Clearing" ═══════════
+   Mobile first: image on top, copy below on teal-black.
+   ≥1024px: copy column left, image right with a single teal-black fade.
+   Safari-safe: no flex gap, no inset shorthand, no aspect-ratio. */
 .hero{
   position:relative;width:100%;
-  height:100vh;height:100dvh;
-  min-height:700px;
-  overflow:hidden;background-color:#0a140c;
+  min-height:100vh;min-height:100dvh;
+  background-color:#08211F;color:#fff;overflow:hidden;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;
 }
-.hero-bg{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 55%;
-  z-index:0;
-  animation:heroZoom 32s ease-in-out infinite alternate;
+.hero-media{
+  position:relative;width:100%;
+  height:128vw;max-height:72vh;
+  -webkit-flex-shrink:0;flex-shrink:0;overflow:hidden;
 }
-@keyframes heroZoom{from{transform:scale(1.0)}to{transform:scale(1.04)}}
-@media(min-width:1024px){.hero-bg{object-position:center 50%}}
+.hero-img{
+  position:absolute;top:0;left:0;width:100%;height:100%;max-width:none;
+  object-fit:cover;object-position:53% 30%;
+  -webkit-transform-origin:55% 45%;transform-origin:55% 45%;
+}
+.hero-fade{
+  position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,33,31,0) 62%,rgba(8,33,31,.72) 84%,#08211F 100%);
+}
+.hero-curtain{display:none}
 
-@media(max-width:767px){.hero-bg{object-position:center 60%}}
+.hero-copy{
+  position:relative;z-index:3;width:100%;
+  -webkit-box-flex:1;-webkit-flex:1 0 auto;flex:1 0 auto;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;
+  -webkit-box-pack:end;-webkit-justify-content:flex-end;justify-content:flex-end;
+  margin-top:-16vw;
+  padding:0 var(--gutter) 32px;
+  padding-bottom:calc(32px + env(safe-area-inset-bottom));
+}
+.hero-col{max-width:440px}
 
-.hero-overlay{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(4,18,15,0.78) 0%,rgba(4,18,15,0.1) 20%,transparent 32%),
-    linear-gradient(0deg,rgba(4,18,15,0.85) 0%,rgba(4,18,15,0.2) 18%,transparent 32%),
-    linear-gradient(90deg,rgba(4,18,15,0.3) 0%,transparent 18%,transparent 82%,rgba(4,18,15,0.3) 100%);
-}
-
-.hero-content{
-  position:relative;z-index:10;width:100%;max-width:var(--max-w);
-  margin:0 auto;padding:0 var(--gutter);
-  height:100%;
-}
-
-/* Wordmark - top center */
-.wordmark{
-  position:absolute;top:100px;left:50%;transform:translateX(-50%);
-  text-align:center;z-index:10;
-  background:none;padding:0;border-radius:0;box-shadow:none;
-}
-.wordmark-h1{margin:0;padding:0;border:0;background:none;display:block;text-align:center}
-.wordmark-rivera{
-  font-family:'Oswald','Archivo Black','Arial Narrow',sans-serif;font-weight:700;
-  font-size:clamp(40px,8vw,72px);color:#0B4A3F;
-  letter-spacing:2px;text-transform:uppercase;
-  line-height:0.95;
-  text-shadow:0 0 24px rgba(255,255,255,0.85),0 0 48px rgba(255,255,255,0.5),0 2px 10px rgba(0,0,0,0.3);
-}
-.wordmark-springs{
-  display:flex;align-items:center;gap:14px;margin-top:4px;justify-content:center;
-}
-.wordmark-springs .gold-rule{
-  flex:0 0 40px;height:1px;background:#C9A227;width:40px;display:block;
-}
-.springs-text{
-  font-family:'Oswald','Archivo Black','Arial Narrow',sans-serif;font-weight:500;
-  font-size:22px;color:#C9A227;
-  letter-spacing:5px;text-transform:uppercase;
-  text-shadow:0 2px 14px rgba(0,0,0,0.5);
-}
-.wordmark-tagline{
-  font-family:'Playfair Display',var(--serif);font-style:italic;
-  font-weight:500;font-size:clamp(16px,3vw,28px);color:#F5D583;
-  margin-top:18px;letter-spacing:0.8px;
-  text-shadow:0 2px 14px rgba(0,0,0,0.6);
-  position:relative;display:inline-block;
-}
-.wordmark-tagline::before,.wordmark-tagline::after{
-  content:"";display:inline-block;width:28px;height:1px;
-  background:#C9A227;vertical-align:middle;margin:0 12px;
+.hero-eyebrow{
+  display:block;margin-bottom:16px;
+  font-family:var(--sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:#C9A227;
 }
 
-/* Hero body block - bottom center */
-.hero-body-block{
-  position:absolute;bottom:120px;left:50%;transform:translateX(-50%);
-  text-align:left;max-width:600px;z-index:10;
-  padding-bottom:40px;
+/* Wordmark lockup — mirrors the bottle label: ivory panel, teal RIVERA, gold SPRINGS */
+.hero-mark{
+  display:inline-block;margin:0;
+  padding:.2em .34em .22em;
+  font-size:clamp(50px,14vw,64px);line-height:1;
+  background:#F6F1E4;border-bottom:3px solid #C9A227;
+}
+.hero-mark-rivera{
+  display:block;
+  font-family:'Oswald','Arial Narrow',sans-serif;font-weight:700;
+  font-size:1em;line-height:.92;letter-spacing:.035em;
+  color:#0B4A3F;text-transform:uppercase;
+  margin-right:-.035em;
+}
+.hero-mark-springs{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  margin-top:.12em;
+}
+.hero-rule{
+  display:block;height:1px;background:#C9A227;
+  -webkit-box-flex:1;-webkit-flex:1 1 auto;flex:1 1 auto;
+}
+.hero-rule--l{-webkit-transform-origin:100% 50%;transform-origin:100% 50%}
+.hero-rule--r{-webkit-transform-origin:0 50%;transform-origin:0 50%}
+.hero-mark-springs-text{
+  font-family:'Oswald','Arial Narrow',sans-serif;font-weight:500;
+  font-size:.24em;line-height:1;letter-spacing:.42em;
+  color:#C9A227;text-transform:uppercase;white-space:nowrap;
+  margin:0 .25em 0 .7em;
 }
 
+.hero-tagline{
+  margin-top:22px;
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;
+  font-size:clamp(20px,5.4vw,24px);line-height:1.25;letter-spacing:.005em;
+  color:#F5D583;text-wrap:balance;
+}
 .hero-statement{
-  font-family:'Playfair Display',var(--serif);font-weight:400;font-style:italic;
-  font-size:28px;line-height:1.35;letter-spacing:0.3px;
-  color:rgba(255,255,255,0.88);max-width:560px;
-  text-shadow:0 4px 20px rgba(0,0,0,0.6);
-  position:relative;padding-left:24px;
-  border-left:3px solid #C9A227;
-  margin:28px 0 36px;
-  opacity:0;transform:translateY(24px);
-  animation:statementReveal 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
-  animation-delay:0.6s;
+  margin-top:14px;max-width:30em;
+  font-family:var(--sans);font-weight:300;
+  font-size:15.5px;line-height:1.62;color:rgba(255,255,255,.74);
+  text-wrap:pretty;
 }
-@keyframes statementReveal{
-  to{opacity:1;transform:translateY(0)}
+.hero-statement .statement-emphasis{color:#fff;font-weight:500}
+.hero-statement .statement-sub{color:rgba(255,255,255,.74)}
+
+.hero-foot{
+  margin-top:26px;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-flex-wrap:wrap;flex-wrap:wrap;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
 }
-.statement-emphasis{
-  display:inline-block;font-weight:600;font-style:normal;
-  font-size:38px;color:#0B4A3F;letter-spacing:0.5px;
-  line-height:1.15;margin:8px 0;
-  background:none;padding:0;border-radius:0;box-shadow:none;
-  text-shadow:0 0 20px rgba(255,255,255,0.8),0 0 40px rgba(255,255,255,0.5),0 2px 10px rgba(0,0,0,0.3);
+.hero-cta{
+  position:relative;display:inline-block;
+  margin-right:28px;padding:14px 0 12px;
+  font-family:var(--sans);font-size:11.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:#fff;
 }
-.statement-sub{
-  display:block;font-size:18px;font-style:italic;
-  color:rgba(255,255,255,0.65);margin-top:10px;
+.hero-cta::after{
+  content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:#C9A227;
+  -webkit-transform-origin:0 50%;transform-origin:0 50%;
+  -webkit-transition:-webkit-transform .4s cubic-bezier(.22,1,.36,1);
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.hero-cta:hover::after,.hero-cta:focus-visible::after{-webkit-transform:scaleX(.35);transform:scaleX(.35)}
+.hero-certs{
+  font-family:var(--sans);font-size:10px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.42);
+  white-space:nowrap;display:block;width:100%;margin-top:10px;
 }
 
-/* Hero bottom bar */
-.hero-bottom{
-  position:absolute;bottom:0;left:0;right:0;z-index:10;
-  padding:1.5rem var(--gutter);
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:var(--max-w);margin:0 auto;
-}
-.hero-bottom-tagline{
-  font-family:'Playfair Display',var(--serif);font-style:italic;font-size:clamp(14px,2.5vw,22px);
-  color:rgba(245,213,131,0.7);letter-spacing:0.5px;
-}
-.hero-bottom-certs{display:flex;gap:.6rem}
-.hero-bottom-cert{
-  font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
-  color:rgba(255,255,255,.3);padding:.4rem .7rem;
-  border:1px solid rgba(255,255,255,.08);
-}
+/* Hindi / Marathi: Devanagari face, no tracking (it breaks conjuncts) */
+html[lang="hi"] .hero-eyebrow,html[lang="mr"] .hero-eyebrow,
+html[lang="hi"] .hero-cta,html[lang="mr"] .hero-cta{font-family:var(--deva);letter-spacing:.02em;font-size:12.5px}
+html[lang="hi"] .hero-tagline,html[lang="mr"] .hero-tagline{font-family:var(--deva);font-style:normal;font-weight:500;line-height:1.45}
+html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(--deva);font-weight:400;line-height:1.75}
 
-/* Rising particles */
-.hero-particle{
-  position:absolute;z-index:2;
-  width:3px;height:3px;border-radius:50%;
-  background:rgba(245,213,131,0.5);
-  box-shadow:0 0 6px rgba(245,213,131,0.3);
-  animation:particleRise linear infinite;
-  pointer-events:none;
-}
-@keyframes particleRise{
-  0%{transform:translateY(0) scale(1);opacity:0}
-  10%{opacity:1}
-  90%{opacity:1}
-  100%{transform:translateY(-100vh) scale(0.3);opacity:0}
-}
-
-/* Hero mobile */
-@media(max-width:768px){
-  .hero{min-height:100vh;min-height:100dvh}
-  .wordmark{top:80px}
-  .wordmark-tagline::before,.wordmark-tagline::after{width:20px;margin:0 8px}
-  .hero-body-block{bottom:90px;max-width:360px;padding:0 1rem}
-  .hero-statement{font-size:18px;padding-left:16px;max-width:100%}
-  .statement-emphasis{font-size:26px}
-  .statement-sub{font-size:14px}
-  .hero-bottom{flex-direction:column;gap:.5rem;text-align:center}
-  .hero-bottom-tagline{font-size:clamp(14px,3.5vw,18px)}
-}
 @media(max-width:380px){
-  .wordmark{top:70px}
-  .hero-body-block{bottom:70px;max-width:300px}
-  .hero-statement{font-size:16px;padding-left:14px}
-  .statement-emphasis{font-size:22px}
-  .statement-sub{font-size:13px}
-  .hero-bottom-cert{font-size:.5rem;padding:.3rem .5rem}
+  .hero-eyebrow{font-size:10px;letter-spacing:.14em}
 }
-@media(min-width:769px) and (max-width:1024px){
-  .springs-text{font-size:20px}
+@media(max-width:1023px) and (max-height:760px){
+  .hero-media{max-height:58vh}
+  .hero-eyebrow{margin-bottom:12px}
+  .hero-tagline{margin-top:16px}
+  .hero-foot{margin-top:16px}
+}
+
+/* Desktop: text column left, bottles right of centre */
+@media(min-width:1024px){
+  .hero{display:block;height:100vh;height:100dvh;min-height:640px}
+  .hero-media{
+    position:absolute;top:0;right:0;bottom:0;left:auto;
+    width:86%;width:min(86%,133.33vh);height:auto;max-height:none;
+  }
+  .hero-img{object-position:20% 50%}
+  .hero-fade{background:linear-gradient(90deg,#08211F 0%,rgba(8,33,31,.92) 16%,rgba(8,33,31,.55) 24%,rgba(8,33,31,0) 34%)}
+  .hero-copy{
+    position:absolute;top:0;right:0;bottom:0;left:0;
+    max-width:var(--max-w);margin:0 auto;
+    -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+    padding:120px var(--gutter) 56px;
+  }
+  .hero-col{max-width:34vw}
+  .hero-eyebrow{font-size:11px;margin-bottom:22px}
+  .hero-mark{font-size:clamp(72px,6.6vw,96px)}
+  .hero-tagline{margin-top:30px;font-size:clamp(24px,2.1vw,30px)}
+  .hero-statement{margin-top:16px;font-size:17px}
+  .hero-foot{margin-top:34px}
+}
+@media(min-width:1024px) and (max-width:1279px){
+  .hero-media{width:82%}
+  .hero-img{object-position:0 50%}
+  .hero-eyebrow{letter-spacing:.15em}
+}
+@media(min-width:1180px){.hero-col{max-width:400px}}
+
+/* Signature motion — runs once on load (class set in <head>, skipped for reduced motion).
+   Only transform and opacity are animated. */
+.hero-anim .hero-curtain{
+  display:block;position:absolute;top:0;right:0;bottom:0;left:0;z-index:2;
+  background:#08211F;
+}
+.hero-anim .hero-img{-webkit-transform:scale(1.06);transform:scale(1.06)}
+.hero-anim .hero-rule{-webkit-transform:scaleX(0);transform:scaleX(0)}
+.hero-anim .hero-rv{opacity:0;-webkit-transform:translateY(14px);transform:translateY(14px)}
+
+.hero-anim .hero.is-in .hero-curtain{
+  -webkit-transform:translateY(-101%);transform:translateY(-101%);
+  -webkit-transition:-webkit-transform 1.1s cubic-bezier(.77,0,.18,1) .1s;
+  transition:transform 1.1s cubic-bezier(.77,0,.18,1) .1s;
+}
+.hero-anim .hero.is-in .hero-img{
+  -webkit-transform:scale(1);transform:scale(1);
+  -webkit-transition:-webkit-transform 1.7s cubic-bezier(.22,1,.36,1) .1s;
+  transition:transform 1.7s cubic-bezier(.22,1,.36,1) .1s;
+}
+.hero-anim .hero.is-in .hero-rule{
+  -webkit-transform:scaleX(1);transform:scaleX(1);
+  -webkit-transition:-webkit-transform .8s cubic-bezier(.65,0,.35,1) .8s;
+  transition:transform .8s cubic-bezier(.65,0,.35,1) .8s;
+}
+.hero-anim .hero.is-in .hero-rv{
+  opacity:1;-webkit-transform:none;transform:none;
+  -webkit-transition:opacity .8s ease,-webkit-transform .8s cubic-bezier(.22,1,.36,1);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1);
+}
+.hero-anim .hero.is-in .hero-rv--1{-webkit-transition-delay:0s;transition-delay:0s}
+.hero-anim .hero.is-in .hero-rv--2{-webkit-transition-delay:.9s;transition-delay:.9s}
+.hero-anim .hero.is-in .hero-rv--3{-webkit-transition-delay:1s;transition-delay:1s}
+@media(prefers-reduced-motion:reduce){
+  .hero-anim .hero-curtain{display:none}
+  .hero-anim .hero-img,.hero-anim .hero-rule,.hero-anim .hero-rv{opacity:1;-webkit-transform:none;transform:none}
 }
 
 .strength-specs{list-style:none;margin:20px 0}
@@ -1110,12 +1149,10 @@ ul,ol{list-style:none}
 #backTop svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.5}
 
 /* ═══════════ MAGNETIC BUTTON HOVER (makemepulse) ═══════════ */
-.hero-cta,
 .partner-cta,
 .loyalty-step{
   transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s ease,box-shadow .3s;
 }
-.hero-cta:hover{transform:scale(1.04)}
 
 /* ═══════════ PRODUCT SCROLL TOUCH (Part A) ═══════════ */
 .product-scroll{-webkit-overflow-scrolling:touch}
@@ -1202,50 +1239,39 @@ ul,ol{list-style:none}
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="hero" aria-label="Hero">
-  <img class="hero-bg" src="assets/img-002.jpg" alt="Rivera Springs bottles in a forest waterfall setting">
-  <div class="hero-overlay" aria-hidden="true"></div>
-
-  <div class="hero-particle" style="left:83%;bottom:-10px;width:2.7px;height:2.7px;animation-duration:9.1s;animation-delay:11.1s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:19%;bottom:-10px;width:4.7px;height:4.7px;animation-duration:15.4s;animation-delay:10.2s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:13%;bottom:-10px;width:2.3px;height:2.3px;animation-duration:13.9s;animation-delay:0.5s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:31%;bottom:-10px;width:2.6px;height:2.6px;animation-duration:13.1s;animation-delay:0.4s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:85%;bottom:-10px;width:3.3px;height:3.3px;animation-duration:15.0s;animation-delay:6.3s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:37%;bottom:-10px;width:4.4px;height:4.4px;animation-duration:16.1s;animation-delay:0.1s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:91%;bottom:-10px;width:2.6px;height:2.6px;animation-duration:12.2s;animation-delay:4.2s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:45%;bottom:-10px;width:3.1px;height:3.1px;animation-duration:9.0s;animation-delay:5.7s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:70%;bottom:-10px;width:2.2px;height:2.2px;animation-duration:9.2s;animation-delay:13.8s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:75%;bottom:-10px;width:4.0px;height:4.0px;animation-duration:9.9s;animation-delay:1.0s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:50%;bottom:-10px;width:3.1px;height:3.1px;animation-duration:10.8s;animation-delay:9.5s" aria-hidden="true"></div>
-  <div class="hero-particle" style="left:89%;bottom:-10px;width:2.5px;height:2.5px;animation-duration:14.5s;animation-delay:9.1s" aria-hidden="true"></div>
-
-  <div class="hero-content">
-    <div class="wordmark">
-      <h1 class="wordmark-h1">
-        <span class="wordmark-rivera" data-i18n="heroRivera">RIVERA</span>
-        <span class="wordmark-springs">
-          <span class="gold-rule"></span>
-          <span class="springs-text" data-i18n="heroSprings">Springs</span>
-          <span class="gold-rule"></span>
-        </span>
-      </h1>
-      <div class="wordmark-tagline" data-i18n="heroWmTag">"Born from Nature. Bottled for You."</div>
-    </div>
-
-    <div class="hero-body-block">
-      <p class="hero-statement" data-i18n="heroBody" data-i18n-html="true">Pure water from the dense forests of <span class="statement-emphasis">Pangdi and Vidarbha&#8217;s<br>pristine waterfalls</span>, <span class="statement-sub">not a municipal borewell.</span></p>
-    </div>
+<section class="hero" id="hero" aria-label="Rivera Springs">
+  <div class="hero-media">
+    <img class="hero-img"
+      src="assets/hero-forest-1280.jpg"
+      srcset="assets/hero-forest-1280.jpg 1280w, assets/hero-forest-1920.jpg 1920w, assets/hero-forest-2400.jpg 2400w"
+      sizes="100vw" width="2400" height="1800"
+      loading="eager" fetchpriority="high"
+      alt="Three Rivera Springs bottles on a stone in a forest stream, lit by morning light">
+    <div class="hero-fade" aria-hidden="true"></div>
+    <div class="hero-curtain" aria-hidden="true"></div>
   </div>
 
-  <div class="hero-bottom">
-    <span class="hero-bottom-tagline">"Born from Nature. Bottled for You."</span>
-    <div class="hero-bottom-certs">
-      <span class="hero-bottom-cert">ISO 22000</span>
-      <span class="hero-bottom-cert">BIS 14543</span>
-      <span class="hero-bottom-cert">FSSAI</span>
+  <div class="hero-copy">
+    <div class="hero-col">
+      <div class="hero-rv hero-rv--1">
+        <span class="hero-eyebrow" data-i18n="heroLabel">Packaged Drinking Water &middot; Added Minerals</span>
+        <h1 class="hero-mark">
+          <span class="hero-mark-rivera" data-i18n="heroRivera">RIVERA</span>
+          <span class="hero-mark-springs">
+            <span class="hero-rule hero-rule--l" aria-hidden="true"></span>
+            <span class="hero-mark-springs-text" data-i18n="heroSprings">Springs</span>
+            <span class="hero-rule hero-rule--r" aria-hidden="true"></span>
+          </span>
+        </h1>
+      </div>
+      <p class="hero-tagline hero-rv hero-rv--2" data-i18n="heroWmTag">Born from Nature. Bottled for You.</p>
+      <p class="hero-statement hero-rv hero-rv--3" data-i18n="heroBody" data-i18n-html="true">Pure water from the dense forests of <span class="statement-emphasis">Pangdi and Vidarbha&#8217;s pristine waterfalls</span>, <span class="statement-sub">not a municipal borewell.</span></p>
+      <div class="hero-foot hero-rv hero-rv--3">
+        <a class="hero-cta" href="#source" data-i18n="heroCta">Discover the Source</a>
+        <span class="hero-certs">ISO 22000 &middot; BIS 14543 &middot; FSSAI</span>
+      </div>
     </div>
   </div>
-
 </section>
 
 <section class="source" id="source" aria-label="The Source">
@@ -1985,7 +2011,7 @@ ul,ol{list-style:none}
       heroLabel:'Packaged Drinking Water \u00b7 Added Minerals',
       heroRivera:'RIVERA',heroSprings:'Springs',heroWmTag:'Born from Nature. Bottled for You.',
       heroH1:'Pure water from the <em>heart of India.</em>',heroCta:'Discover the Source',
-      heroBody:'Pure water from the dense forests of <span class="statement-emphasis">Pangdi and Vidarbha\u2019s<br>pristine waterfalls</span>, <span class="statement-sub">not a municipal borewell.</span>',
+      heroBody:'Pure water from the dense forests of <span class="statement-emphasis">Pangdi and Vidarbha\u2019s pristine waterfalls</span>, <span class="statement-sub">not a municipal borewell.</span>',
       stat1Val:'7 Stage',stat1Label:'Filtration',stat2Label:'Parts Per Million',stat3Label:'BIS Certified',
       scrollCue:'Scroll',
       srcLabel:'The Source',
@@ -2437,6 +2463,22 @@ document.addEventListener('keydown',function(e){
       submitBtn.disabled=false;
     });
   });
+})();
+</script>
+<script>
+/* Hero reveal: start once the hero image is decoded, then drop the animation state */
+(function(){
+  var root=document.documentElement,hero=document.getElementById('hero');
+  if(!hero||root.className.indexOf('hero-anim')<0)return;
+  var img=hero.querySelector('.hero-img'),started=false;
+  function start(){
+    if(started)return;started=true;
+    requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('is-in')})});
+    setTimeout(function(){root.classList.remove('hero-anim');hero.classList.remove('is-in')},2400);
+  }
+  function ready(){if(img.decode){img.decode().then(start,start)}else{start()}}
+  if(img.complete&&img.naturalWidth){ready()}else{img.addEventListener('load',ready);img.addEventListener('error',start)}
+  setTimeout(start,2500);
 })();
 </script>
 </body>
