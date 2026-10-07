@@ -1204,6 +1204,12 @@ html[lang="mr"] .statement-font {
   font-family: 'Noto Serif Devanagari', 'Cormorant Garamond', serif !important;
   font-weight: 500 !important;
 }
+/* Extra line spacing for Devanagari so marks above/below don't crowd the next line
+   (hero sentence and journey title already have taller line-heights, so they're left out) */
+html[lang="hi"] .statement-font:not(.hero-statement):not(.journey-title),
+html[lang="mr"] .statement-font:not(.hero-statement):not(.journey-title) {
+  line-height: 1.45;
+}
 </style>
 </head>
 <body>
