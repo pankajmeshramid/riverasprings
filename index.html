@@ -49,7 +49,7 @@
 <script>try{if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.className+=" hero-anim"}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700;1,6..96,900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700;1,6..96,900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
 /* ═══════════ RESET & VARIABLES ═══════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1192,6 +1192,18 @@ html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(
 }
 .social-icon:hover{color:#C9A227;border-color:#C9A227}
 
+/* Premium statement font — applied only to the client-selected statement lines */
+.statement-font {
+  font-family: 'Cormorant Garamond', 'Noto Serif Devanagari', Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px;
+}
+/* Hindi and Marathi: use the matching Devanagari serif */
+html[lang="hi"] .statement-font,
+html[lang="mr"] .statement-font {
+  font-family: 'Noto Serif Devanagari', 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+}
 </style>
 </head>
 <body>
@@ -1265,7 +1277,7 @@ html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(
         </h1>
       </div>
       <p class="hero-tagline hero-rv hero-rv--2" data-i18n="heroWmTag">Born from Nature. Bottled for You.</p>
-      <p class="hero-statement hero-rv hero-rv--3" data-i18n="heroBody" data-i18n-html="true">Pure water from the dense forests of <span class="statement-emphasis">Pangdi and Vidarbha&#8217;s pristine waterfalls</span>, <span class="statement-sub">not a municipal borewell.</span></p>
+      <p class="hero-statement hero-rv hero-rv--3 statement-font" data-i18n="heroBody" data-i18n-html="true">Pure water from the dense forests of <span class="statement-emphasis">Pangdi and Vidarbha&#8217;s pristine waterfalls</span>, <span class="statement-sub">not a municipal borewell.</span></p>
       <div class="hero-foot hero-rv hero-rv--3">
         <a class="hero-cta" href="#source" data-i18n="heroCta">Discover the Source</a>
         <span class="hero-certs">FSSAI &middot; BIS Certified</span>
@@ -1280,7 +1292,7 @@ html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(
       <div class="source-text">
         <span class="label rv" data-i18n="srcLabel">The Source</span>
         <span class="gold-rule rv rv-d1"></span>
-        <h2 class="rv rv-d1" data-i18n="srcH2">Pure water from the dense forests of Pangdi and Vidarbha&#8217;s pristine waterfalls, not a municipal borewell</h2>
+        <h2 class="rv rv-d1 statement-font" data-i18n="srcH2">Pure water from the dense forests of Pangdi and Vidarbha&#8217;s pristine waterfalls, not a municipal borewell</h2>
         <p class="rv rv-d2" data-i18n="srcP1">Rivera Springs draws from the pure, untouched waterfalls and natural springs in the <strong>dense forests of Pangdi and Vidarbha</strong> — water naturally filtered through ancient rock formations over millennia. Rich in <strong>Magnesium, Potassium &amp; Sodium</strong>, this water carries the balanced mineral profile that only geological filtration can provide.</p>
         <p class="rv rv-d2" data-i18n="srcP2">This isn’t treated municipal water or borewell supply dressed up with a label. This is nature’s own filtration, bottled at the source. We pipe from spring to plant within a closed circuit — no tanker transport, no open-air holding. The bottling facility sits at the source, not hundreds of kilometres away in an industrial estate.</p>
 
@@ -1297,7 +1309,7 @@ html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(
       </div>
     </div>
     <div class="water-journey rv rv-d3">
-      <h3 class="journey-title" data-i18n="journeyTitle">The Journey of Every Drop</h3>
+      <h3 class="journey-title statement-font" data-i18n="journeyTitle">The Journey of Every Drop</h3>
       <div class="journey-track">
         <svg class="journey-line" viewBox="0 0 1200 40" preserveAspectRatio="none">
           <path id="journeyPath" d="M 20,20 L 1180,20" stroke="url(#flowGrad)" stroke-width="2" fill="none" stroke-dasharray="6,6"/>
@@ -1370,7 +1382,7 @@ html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(
     <div class="products-header">
       <div class="left">
         <span class="label rv" data-i18n="prodLabel">Our Range</span>
-        <h2 class="rv rv-d1" data-i18n="prodH2" data-i18n-html="true">Every format,<br>one source<span class="gold-rule" style="margin-top:1rem"></span></h2>
+        <h2 class="rv rv-d1 statement-font" data-i18n="prodH2" data-i18n-html="true">Every format,<br>one source<span class="gold-rule" style="margin-top:1rem"></span></h2>
       </div>
       <p class="right rv rv-d2" data-i18n="prodDesc">All bottles use the same spring source and undergo identical multi-stage purification. The only difference is the pack format.</p>
     </div>
@@ -1505,7 +1517,7 @@ html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(
     <div class="quality-header rv">
       <span class="label" data-i18n="qualLabel">Quality &amp; Certification</span>
       <span class="gold-rule"></span>
-      <h2 data-i18n="qualH2">Tested at source, tested at line, tested before dispatch</h2>
+      <h2 class="statement-font" data-i18n="qualH2">Tested at source, tested at line, tested before dispatch</h2>
       <p data-i18n="qualIntro">Every production batch is sampled and tested against parameters mandated by BIS standards. Records are maintained for FSSAI inspection on demand.</p>
     </div>
 
