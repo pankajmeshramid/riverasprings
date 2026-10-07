@@ -669,7 +669,9 @@ html[lang="hi"] .hero-statement,html[lang="mr"] .hero-statement{font-family:var(
 .product-card:hover .product-card-photo::after{border-color:rgba(201,162,39,0.4)}
 .product-card[data-bottle="250ml"] .product-card-photo img{object-position:center 25%}
 .product-card[data-bottle="500ml"] .product-card-photo img{object-position:center 20%}
-.product-card[data-bottle="1l"] .product-card-photo img{object-position:center 35%}
+/* 1 Litre studio shot: show the whole bottle, no cropping */
+.product-card[data-bottle="1l"] .product-card-photo{background:#ffffff;border-bottom:1px solid rgba(11,74,63,0.12)}
+.product-card[data-bottle="1l"] .product-card-photo img{object-fit:contain;object-position:center;padding:12px 0}
 .product-card-content{padding:24px 20px 28px;text-align:center}
 .product-vol{font-family:var(--serif);font-size:1.625rem;font-weight:700;color:#08211F;margin-bottom:.375rem;letter-spacing:.5px}
 .product-name{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#C9A227;font-weight:600;margin-bottom:.875rem}
@@ -1447,7 +1449,7 @@ html[lang="mr"] .statement-font:not(.hero-statement):not(.journey-title) {
       </div>
       <div class="product-card rv rv-d2" data-bottle="1l">
         <div class="product-card-photo">
-          <img src="assets/img-008.jpg" alt="Rivera Springs 1 Litre bottle" loading="lazy">
+          <img src="assets/range-1l-studio.jpg" alt="Rivera Springs 1 Litre bottle" loading="lazy">
         </div>
         <div class="product-card-content">
           <div class="product-vol">1 Litre</div>
@@ -1456,7 +1458,7 @@ html[lang="mr"] .statement-font:not(.hero-statement):not(.journey-title) {
         </div>
         <div class="bottle-hover-popup">
           <div class="popup-3d-stage">
-            <div class="popup-bottle-img" style="width:40px;height:120px;background:url(assets/img-009.jpg) center/contain no-repeat;border-radius:6px 6px 4px 4px;border:1px solid rgba(201,162,39,0.3)"></div>
+            <div class="popup-bottle-img" style="width:40px;height:120px;background:url(assets/range-1l-studio.jpg) center/contain no-repeat;border-radius:6px 6px 4px 4px;border:1px solid rgba(201,162,39,0.3)"></div>
           </div>
           <div class="popup-specs">
             <h3 data-i18n="popupStrengthTitle">Built to Last</h3>
